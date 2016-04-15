@@ -67,7 +67,7 @@ class LFC_Admin {
      * Register the stylesheet for the Dashboard.
      *
      * This function is used to register all the required stylesheets for
-     * dashboard. Styles will be registered only for i4t3 pages for performance.
+     * dashboard. Styles will be registered only for lfc pages for performance.
      *
      * @since 2.0.0
      * @uses  wp_enqueue_style 	To register style
@@ -129,7 +129,7 @@ class LFC_Admin {
      * Includes admin page contents to manage settings.
      * All html parts will be included in this page.
      *
-     * @since  2.0.0
+     * @since 2.0.0
      * 
      * @return void
      */
@@ -160,7 +160,7 @@ class LFC_Admin {
     /**
      * Custom footer text for LFC pages.
      *
-     * @since  2.0.0
+     * @since 2.0.0
      * 
      * @return mixed
      */
@@ -187,7 +187,7 @@ class LFC_Admin {
      * Function to add a quick link to lfc,
      * when being listed on your plugins list view.
      *
-     * @since  2.0.0
+     * @since 2.0.0
      * 
      * @return array $links Links to display.
      */
@@ -210,9 +210,6 @@ class LFC_Admin {
      *
      * Function to output the debug data for the plugin. This will be useful
      * when asking for support. Just copy and paste these data to the email.
-     * 
-     * @param array $options        Array of plugin settings
-     * @param array $active_plugins Array of active plugins path
      *
      * @note Please DO NOT translate this part, as this need to be provided
      * for debugging only. The developer may not understand the translated words.
@@ -224,14 +221,13 @@ class LFC_Admin {
     public function get_debug_data() {
 
         $html = '';
-        $options = get_option('lfc_options');
         $active_plugins = get_option('active_plugins', array());
         $active_theme = wp_get_theme();
 
         // Dump the plugin settings data
-        if (!empty($options)) {
+        if (!empty($this->options)) {
             $html .= '<h4>Settings Data</h4><p><pre>';
-            foreach ($options as $key => $option) {
+            foreach ($this->options as $key => $option) {
                 $html .= $key . ' : ' . $option . '<br/>';
             }
             $html .= '</pre></p><hr/>';
